@@ -6,7 +6,7 @@ prime = [False]*(N+1)
 prime[0] = prime[1] = True
 
 for i in range(2, N+1):
-    if prime[i] == False:
+    if not prime[i]:
         j = 2
 
         while i*j <= N:
