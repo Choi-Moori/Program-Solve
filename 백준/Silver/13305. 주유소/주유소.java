@@ -1,31 +1,30 @@
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) {
 
-        int[] distant, cost;
-        int res = 0;
 
+        long res = 0;
 
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
+        long n = sc.nextInt();
+        sc.nextLine();
+        String st = sc.nextLine();
+        String st2 = sc.nextLine();
 
-        distant = new int[n-1];
-        cost = new int[n];
+        StringTokenizer distant = new StringTokenizer(st, " ");
+        StringTokenizer cost = new StringTokenizer(st2, " ");
 
-        for(int i = 0 ; i < n-1; i++)
-            distant[i] = sc.nextInt();
 
-        for(int i = 0; i<n ; i++)
-            cost[i] = sc.nextInt();
-
-        int temp = cost[0];
+        long temp = Integer.parseInt(cost.nextToken());
 
         for(int i = 0; i < n-1 ; i++){
-            res += temp*distant[i];
+            long dis = Integer.parseInt(distant.nextToken());
+            res += temp*dis;
 
-            temp = Math.min(temp, cost[i+1]);
+            temp = Math.min(temp, Integer.parseInt(cost.nextToken()));
         }
         System.out.println(res);
 
