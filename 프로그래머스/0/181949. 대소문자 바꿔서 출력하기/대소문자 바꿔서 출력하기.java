@@ -1,19 +1,23 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String a = sc.next();
-        
-        char b;
-        String c = "";
-        
-        for(int i = 0 ; i < a.length(); i++){
-            b = a.charAt(i);
-            if ((int) b >= 91)
-                System.out.print(String.valueOf(b).toUpperCase());
-            else
-                System.out.print(String.valueOf(b).toLowerCase());
-        }
+        String answer = "";
+
+        //Stack <Character> stack = new Stack <> ();
+
+        for(Character c : a.toCharArray()){
+            if(Character.isUpperCase(c)){
+                //stack.push(Character.toLowerCase(c));
+                answer += Character.toLowerCase(c);
+            }
+            else if(Character.isLowerCase(c)){
+                //stack.push(Character.toUpperCase(c));
+                answer += Character.toUpperCase(c);
+            }
+        } 
+        System.out.println(answer);
     }
 }
