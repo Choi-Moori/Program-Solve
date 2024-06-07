@@ -1,19 +1,25 @@
 import java.util.*;
 
 class Solution {
-    public String solution(int[] numbers) {
+    public StringBuilder solution(int[] numbers) {
         String answer = "";
         String[] str = new String[numbers.length];
         for(int i = 0 ; i < numbers.length ; i++){
             str[i] = String.valueOf(numbers[i]);
         }
+        StringBuilder strbuild = new StringBuilder();
         
         Arrays.sort(str, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
 
-        if(str[0].equals("0"))
-            return "0";
+        if(str[0].equals("0")){
+            strbuild.append(0);
+            return strbuild;
+        }
             
+        for(String i : str){
+            strbuild.append(i);
+        }
         
-        return String.join("", str);
+        return strbuild;
     }
 }
