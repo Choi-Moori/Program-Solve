@@ -1,19 +1,27 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int num = 0;
-        int num1 = 1;
-        int res = 0;
+        int num = Integer.parseInt(br.readLine());
+        int[] dp = new int[num+1];
 
-        while(n-->0){
-            res = (num+num1)%10007;
-            num = num1;
-            num1 = res;
+        if(num < 2){
+            System.out.println(1);
         }
-        System.out.println(res);
+        else{
+            dp[0] = 1;
+            dp[1] = 1;
+            for(int i = 2; i < num+1; i++){
+                dp[i] = dp[i-1]%10007 + dp[i-2]%10007;
+            }
+            System.out.println(dp[num]%10007);
+        }
+
+
     }
 }
