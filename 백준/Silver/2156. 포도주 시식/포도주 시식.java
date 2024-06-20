@@ -20,14 +20,16 @@ public class Main {
         else {
             dp[0] = numlist[0];
             dp[1] = Math.max(dp[0], dp[0] + numlist[1]);
-            dp[2] = Math.max(dp[0] + numlist[2], numlist[1] + numlist[2]);
-            dp[2] = Math.max(dp[2], dp[1]);
+            dp[2] = max(dp[0] + numlist[2], numlist[1] + numlist[2],dp[1]);
             for (int i = 3; i < num; i++) {
-                dp[i] = Math.max(numlist[i - 1] + numlist[i] + dp[i - 3], dp[i - 2] + numlist[i]);
-                dp[i] = Math.max(dp[i], dp[i - 1]);
+                dp[i] = max(numlist[i - 1] + numlist[i] + dp[i - 3], dp[i - 2] + numlist[i], dp[i-1]);
             }
 
             System.out.println(dp[num-1]);
         }
+    }
+
+    public static int max(int a, int b, int c){
+        return (a >= b) ? Math.max(a, c) : Math.max(b, c);
     }
 }
