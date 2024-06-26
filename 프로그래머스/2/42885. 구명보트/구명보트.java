@@ -2,17 +2,21 @@ import java.util.*;
 class Solution {
     public static int solution(int[] people, int limit){
         int count = 0;
-        Deque<Integer> queue = new ArrayDeque<>();
         Arrays.sort(people);
-        for(int i : people) queue.add(i);
-
-        while(!queue.isEmpty()){
-            int last = queue.pollLast();
-            count++;
-            if(!queue.isEmpty() &&  last + queue.peekFirst() <= limit){
-                queue.pollFirst();
+        int i = 0;
+        int j = people.length-1;
+        while(i<j){
+            if(people[i] + people[j] > limit){
+                count++;
+                j--;
+            }
+            else{
+                i++;
+                j--;
+                count++;
             }
         }
+        if(i==j) count++;
         return count;
     }
 }
