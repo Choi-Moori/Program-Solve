@@ -8,17 +8,13 @@ class Solution {
         while(start != n+1){
             if(temp == n){
                 answer++;
-                start++;
-                temp = start;
-                end=start+1;
+                temp += end++;
             }
-            else if(temp> n){
-                temp -= start;
-                start++;
+            else if(temp + end > n){
+                temp -= start++;
             }
-            else if(temp <= n){
-                temp+= end;
-                end++;
+            else if(temp < n){
+                temp+= end++;
             }
         }
 
