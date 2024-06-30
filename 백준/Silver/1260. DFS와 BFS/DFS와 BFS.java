@@ -7,6 +7,7 @@ public class Main {
     static boolean[] visitdfs;
     static boolean[] visitbfs;
     static List<List<Integer>> list;
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -35,12 +36,13 @@ public class Main {
         }
 
         dfs(target);
-        System.out.println();
+        sb.append("\n");
         bfs(target);
+        System.out.println(sb);
     }
 
     public static void dfs(int start){
-        System.out.print(start + " ");
+        sb.append(start).append(" ");
         visitdfs[start] = true;
         for(int i : list.get(start)){
             if(!visitdfs[i])
@@ -56,12 +58,12 @@ public class Main {
             for(int i : temp){
                 if(!visitbfs[i]) {
                     queue.add(list.get(i));
-                    System.out.print(start + " ");
+                    sb.append(start).append(" ");
                     start = i;
                     visitbfs[i] = true;
                 }
             }
         }
-        System.out.println(start);
+        sb.append(start);
     }
 }
