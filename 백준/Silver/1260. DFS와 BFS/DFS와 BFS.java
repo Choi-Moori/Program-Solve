@@ -50,20 +50,18 @@ public class Main {
         }
     }
     public static void bfs(int start){
-        Queue<List<Integer>> queue = new LinkedList<>();
-        queue.add(list.get(start));
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(start);
+        visitbfs[start] = true;
         while(!queue.isEmpty()){
-            List<Integer> temp =queue.poll();
-            visitbfs[start] = true;
-            for(int i : temp){
+            int temp = queue.poll();
+            sb.append(temp).append(" ");
+            for(int i : list.get(temp)){
                 if(!visitbfs[i]) {
-                    queue.add(list.get(i));
-                    sb.append(start).append(" ");
-                    start = i;
+                    queue.offer(i);
                     visitbfs[i] = true;
                 }
             }
         }
-        sb.append(start);
     }
 }
