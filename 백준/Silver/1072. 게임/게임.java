@@ -9,12 +9,14 @@ public class Main {
         String[] st = br.readLine().split(" ");
         int X = Integer.parseInt(st[0]);
         int Y = Integer.parseInt(st[1]);
+        int tag = oper(X,Y);
+        binary_search(tag, X, Y);
+
+    }
+    public static void binary_search(int tag, int X, int Y){
         int start = 0;
         int end = X;
-
-        int tag = oper(X,Y);
         int count = -1;
-
         while (start <= end) {
             int mid = (start + end) / 2;
 
