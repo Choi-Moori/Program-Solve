@@ -3,22 +3,20 @@ import java.util.*;
 class Solution {
     public int solution(int[] scoville, int K) {
         int answer = 0;
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         
-        for(int s : scoville) {
-            minHeap.add(s);
+        for(int i : scoville){
+            queue.offer(i);
         }
         
-        while(minHeap.size() > 1 && minHeap.peek() < K) {
-            int leastSpicy = minHeap.poll();
-            int secondLeastSpicy = minHeap.poll();
-            int newDish = leastSpicy + (secondLeastSpicy * 2);
-            minHeap.add(newDish);
+        while(queue.peek() < K){
+            int f = queue.poll();
+            if(queue.isEmpty()){
+                answer = -1;
+                break;
+            }
+            queue.offer(f+(queue.poll() * 2));
             answer++;
-        }
-        
-        if(minHeap.peek() < K) {
-            return -1; // 더 이상 섞을 수 없을 때 목표 K를 달성하지 못하는 경우
         }
         
         return answer;
